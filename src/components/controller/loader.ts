@@ -1,13 +1,4 @@
-interface RequestOptions {
-    [key: string]: string | number;
-}
-
-interface ResponseOptions {
-    endpoint: string;
-    options?: RequestOptions;
-}
-
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+import { RequestOptions, ResponseOptions, HttpMethod } from '../../types';
 
 class Loader {
     private baseLink: string;

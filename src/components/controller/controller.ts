@@ -1,42 +1,11 @@
 import AppLoader from './appLoader';
-
-interface Source {
-    id: string;
-    name: string;
-    description: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
-}
-
-interface Article {
-    source: {
-        id: string | null;
-        name: string;
-    };
-    author: string | null;
-    title: string;
-    description: string | null;
-    url: string;
-    urlToImage: string | null;
-    publishedAt: string;
-    content: string | null;
-}
-
-interface SourceResponse {
-    sources: Source[];
-}
-
-interface ArticleResponse {
-    articles: Article[];
-}
+import { ApiEndpoint, ArticleResponse, SourceResponse } from '../../types';
 
 class AppController extends AppLoader {
     getSources(callback: (data: SourceResponse) => void): void {
         super.getResp<SourceResponse>(
             {
-                endpoint: 'sources',
+                endpoint: ApiEndpoint.Sources,
             },
             callback
         );
@@ -55,7 +24,7 @@ class AppController extends AppLoader {
 
                     super.getResp<ArticleResponse>(
                         {
-                            endpoint: 'everything',
+                            endpoint: ApiEndpoint.Everything,
                             options: {
                                 sources: sourceId,
                             },
