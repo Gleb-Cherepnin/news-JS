@@ -11,13 +11,9 @@ class App {
     }
 
     start(): void {
-        document
-            .querySelector<HTMLElement>('.sources')
-            ?.addEventListener('click', (e: Event) => {
-                this.controller.getNews(e as MouseEvent, (data) =>
-                    this.view.drawNews(data),
-                );
-            });
+        document.querySelector<HTMLElement>('.sources')?.addEventListener('click', (e: Event) => {
+            this.controller.getNews(e as MouseEvent, (data) => this.view.drawNews(data));
+        });
 
         this.controller.getSources((data) => this.view.drawSources(data));
     }

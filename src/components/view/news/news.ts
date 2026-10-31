@@ -1,20 +1,9 @@
 import './news.css';
-
-interface Article {
-    urlToImage: string | null;
-    author: string | null;
-    source: {
-        name: string;
-    };
-    publishedAt: string;
-    title: string;
-    description: string | null;
-    url: string;
-}
+import { Article } from '../../../types';
 
 class News {
     draw(data: Article[]): void {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const news = data.slice(0, 10);
 
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector<HTMLTemplateElement>('#newsItemTemp');

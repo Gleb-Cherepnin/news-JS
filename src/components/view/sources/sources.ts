@@ -1,4 +1,3 @@
-
 import './sources.css';
 
 interface Source {

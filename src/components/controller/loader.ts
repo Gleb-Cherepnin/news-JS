@@ -22,7 +22,7 @@ class Loader {
         { endpoint, options = {} }: ResponseOptions,
         callback: (data: T) => void = () => {
             console.error('No callback for GET response');
-        },
+        }
     ): void {
         this.load<T>('GET', endpoint, callback, options);
     }
@@ -30,9 +30,7 @@ class Loader {
     errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404) {
-                console.log(
-                    `Sorry, but there is ${res.status} error: ${res.statusText}`,
-                );
+                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             }
 
             throw new Error(res.statusText);
@@ -52,12 +50,7 @@ class Loader {
         return url.toString();
     }
 
-    load<T>(
-        method: HttpMethod,
-        endpoint: string,
-        callback: (data: T) => void,
-        options: RequestOptions = {},
-    ): void {
+    load<T>(method: HttpMethod, endpoint: string, callback: (data: T) => void, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then((res) => this.errorHandler(res))
             .then((res) => res.json() as Promise<T>)
