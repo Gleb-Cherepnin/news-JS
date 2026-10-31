@@ -1,4 +1,14 @@
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+}
+
 body {
+    margin: 0;
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
@@ -9,27 +19,67 @@ header {
 }
 
 header h1 {
+    margin: 0;
     font-size: 40px;
     font-weight: 800;
+    overflow-wrap: anywhere;
 }
 
 footer {
-    height: 100px;
+    min-height: 100px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #777;
     text-align: center;
+    line-height: 1.5;
 }
+
 footer .copyright a {
-    color: #444;
+    color: #999;
 }
+
 footer .copyright a:hover {
-    color: #555;
+    color: #fff;
 }
+
 footer .copyright:before {
     content: '©';
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+
+    footer .copyright {
+        font-size: 12px;
+    }
 }
